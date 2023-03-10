@@ -1,4 +1,4 @@
-module food-d
+module food-delivery
 
 go 1.19
 

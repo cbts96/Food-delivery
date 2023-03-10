@@ -74,6 +74,7 @@
 package main
 
 import (
+	"food-delivery/module/restaurant/transport/ginrestaurant"
 	"log"
 	"net/http"
 	"os"
@@ -81,7 +82,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-    "strconv"
+	// "strconv"
 )
 
 type Restaurant struct {
@@ -116,25 +117,14 @@ func main() {
 		})
 	})
 	v1 := r.Group("/v1")
-	v1.POST("/restaurants", func(c *gin.Context) {
-		var data Restaurant
-		if err := c.ShouldBind(&data); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{
-				"error": err.Error(),
-			})
-			return
-		}
-		db.Create(&data)
-		c.JSON(http.StatusOK, gin.H{
-			"data": data,
-		})
-	})
-	v1.GET("/restaurants/:id",func (c *gin.Context){
-		id, err:=strconv.Atoi(c.Param("id"))
-		id err := c.ShouldBind(&data); err !=nil{
-			c.JSON(htt)
-		}
+	v1.POST("/restaurants", ginrestaurant.CreateRestaurant(db))
+	// v1.GET("/restaurants/:id",func (c *gin.Context){
+	// 	id, err:=strconv.Atoi(c.Param("id"))
+	// 	id, err := c.ShouldBind(&data); err !=nil{
+	// 		c.JSON(http)
+	// 	}
 
-	})
+	// })
+	v1.DELETE("/restaurant/:id",ginrestaurant.DeleteRestaurant(db))
 	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
