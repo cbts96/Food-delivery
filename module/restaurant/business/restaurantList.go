@@ -19,7 +19,7 @@ type listRestaurantBusiness struct {
 func NewListRestaurantBusiness(store ListRestaurantStore) *listRestaurantBusiness {
 	return &listRestaurantBusiness{store: store}
 }
-func (business *listRestaurantBusiness) ListRestaurant(context context.Context, filter *restaurantmodel.Filter, paging *common.Paging) ([]restaurantmodel.Restaurant, error) {
+func (business *listRestaurantBusiness) ListRestaurant(context context.Context, filter *restaurantmodel.Filter, paging *common.Paging,) ([]restaurantmodel.Restaurant, error) {
 	
 	result, err := business.store.ListDataWithCondition(context, filter, paging)
 	if err != nil {

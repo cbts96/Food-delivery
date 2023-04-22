@@ -22,6 +22,7 @@ func ListRestaurant(appCtx appctx.AppContext) gin.HandlerFunc{
 			})
 			return
 		}
+		pagingData.Fulfill()
 		var filter restaurantmodel.Filter
 		if err :=c.ShouldBind(&filter);err !=nil{
 			c.JSON(http.StatusBadRequest,gin.H{
