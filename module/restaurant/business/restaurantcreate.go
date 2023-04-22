@@ -27,3 +27,33 @@ func (business *createRestaurantBusiness) CreateRestaurant(context context.Conte
 	}
 	return nil
 }
+
+// package restaurantbusiness
+
+// import (
+// 	"context"
+// 	"errors"
+// 	restaurantmodel "food-delivery/module/restaurant/model"
+// )
+
+
+// type CreateRestaurantStore interface{
+// 	CreateRestaurant(context context.Context,data *restaurantmodel.RestaurantCreate)
+// }
+
+// type createRestaurantBusiness struct{
+// 	store CreateRestaurantStore
+// }
+
+// func NwCreateResBusiness(store CreateRestaurantStore) *createRestaurantBusiness{
+// 	return &createRestaurantBusiness{store: store}
+// }
+// func (business *createRestaurantBusiness) CreateRestaurant(context context.Context,data *restaurantmodel.RestaurantCreate) error{
+// 	if data.Name ==""{
+// 		return errors.New(("Field Name cant be empty!"))
+// 	}
+// 	if error := business.store.CreateRestaurant(context,data);error !=nil{
+// 		return error
+// 	}
+// 	return nil
+// }

@@ -5,6 +5,7 @@ type Restaurant struct {
 	Id   int    `json: "id" gorm:"column:id";`
 	Name string `json: "id" gorm:"column:name";`
 	Addr string `json: "addr" gorm:"column:addr";`
+	Status int `json: "status" gorm:"column:status";`
 }
 
 func (Restaurant) TableName() string { return "restaurant" }
